@@ -26,17 +26,13 @@ def cameraFaceRecog():
         print("Error opening camera")
     else:
         print("Camera opened")
-
         while True:
             ret, frame = camera.read()
-
             faceRecog(frame)
-
             if ret:
                 cv2.imshow('LiveCam', frame)
             else:
                 print("Frame read error")
-
             # q button to quit
             if cv2.waitKey(1) == ord('q'):
                 break
@@ -104,7 +100,7 @@ def loadImagesAndDetectFaces():
                 f
                 for f in file_list
                 if os.path.isfile(os.path.join(folder, f))
-                and f.lower().endswith((".png", ".gif"))
+                and f.lower().endswith((".png"))
             ]
             windowImages["-FILE LIST-"].update(fnames)
         elif event == "-FILE LIST-":  # A file was chosen from the listbox
@@ -114,7 +110,7 @@ def loadImagesAndDetectFaces():
                 )
                 windowImages["-TOUT-"].update(nameOfFile)
                 imageWithFaces = faceRecogByFilename(nameOfFile)
-                # im_resize = cv2.resize(imageWithFaces, (500, 500))
+                im_resize = cv2.resize(imageWithFaces, (500, 500))
                 is_success, im_buf_arr = cv2.imencode(".png", im_resize)
 
                 if is_success:
