@@ -122,12 +122,6 @@ def loadImagesAndDetectFaces():
                 pass
         elif event == "CLOSE" or event == gui.WIN_CLOSED:
             break
-        elif event == "YOUR IMAGES FACE DETECT":
-            loadImagesAndDetectFaces()
-        elif event == "EXAMPLE":
-            simpleImageFaceRecogeExample()
-        elif event == "CAMERA":
-            cameraFaceRecog()
 
     windowImages.close()
 
